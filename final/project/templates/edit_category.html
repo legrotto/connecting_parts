@@ -1,0 +1,27 @@
+{% from "macro.html" import render_field %}
+
+{% extends "base.html" %}
+
+
+{% block content %}
+<section class="container-center">
+    <form method="POST" action="">
+        <div class="title">
+            <h1>Atualizar Categoria</h1>
+        </div>
+        {{ form.csrf_token }}
+        {% for field in form if field.name != "csrf_token" %}
+        <div class="form-group">
+            {{ render_field(field, type='text', class='caixa_texto') }}
+        </div>
+        <br>
+        {% endfor %}
+        <div>
+            <br>
+            <input type="submit" class="btn btn-primary btn-lg btn-submit custom_btn" value="Atualizar">
+            <a href="{{ url_for('category.index') }}"><input type="button" class="btn btn-primary btn-lg"
+                    value="Voltar"></a>
+        </div><br>
+    </form>
+</section>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="title">
+    <h2>Lista de Livros</h2>
+    <br>
+</div>
+<div class="table-responsive-xl">
+    <table class="table table-striped" style="width: 100%;">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Categoria</th>
+                <th>Quantidade</th>
+                <th>Excluir</th>
+                <th>Editar</th>
+            </tr>
+        </thead>
+        {% for product in products %}
+        <tbody>
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.category.name }}</td>
+                <td>{{ product.quantity }}</td>
+
+                <td><a class="sublinhar" href="/deletep/{{ product.id }}">Excluir</a></td>
+                <td><a class="sublinhar" href="/editp/{{ product.id }}">Editar</a></td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table><br>
+    <a href="{{ url_for('product.insertp') }}"><input type="button" class="btn btn-primary btn-lg" value="Novo Livro"></a>
+    <a href="{{ url_for('main.index') }}"><input type="button" class="btn btn-primary btn-lg" value="Voltar"></a>
+</div>
+{% endblock %}

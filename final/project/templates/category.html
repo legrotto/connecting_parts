@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="title">
+    <h2>Lista de Categorias</h2>
+    <br>
+</div>
+<div class="table-responsive-xl">
+    <table class="table table-striped" style="width: 100%;">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Categoria</th>
+                <th>Excluir</th>
+                <th>Editar</th>
+            </tr>
+        </thead>
+        {% for category in categories %}
+        <tbody>
+            <tr>
+                <td>{{ category.id }}</td>
+                <td>{{ category.name }}</td>
+                <td><a class="sublinhar" href="/delete/{{ category.id }}">Excluir</a></td>
+                <td><a class="sublinhar" href="/edit/{{ category.id }}">Editar</a></td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table><br>
+    <a href="{{ url_for('category.insert') }}"><input type="button" class="btn btn-primary btn-lg" value="Nova Categoria"></a>
+    <a href="{{ url_for('main.index') }}"><input type="button" class="btn btn-primary btn-lg" value="Voltar"></a>
+</div>
+{% endblock %}
